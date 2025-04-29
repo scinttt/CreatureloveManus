@@ -1,6 +1,7 @@
 package com.creaturelove.creatureloveaiagent;
 
 import com.creaturelove.creatureloveaiagent.app.ChatApp;
+import com.creaturelove.creatureloveaiagent.app.ChatReport;
 import jakarta.annotation.Resource;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -33,7 +34,17 @@ class CreatureloveAiAgentApplicationTests {
         message = "What's the name of my partner? I just told you. Help me to remember it";
         answer = chatApp.doChat(message, chatId);
         Assertions.assertNotNull(answer);
+    }
 
+    @Test
+    void doChatWithReport(){
+        String chatId = UUID.randomUUID().toString();
+        // first round
+        String message = "Hello, I am Creaturelove" + "I want to let my partner(Fey) love me more";
+
+        ChatReport report = chatApp.doChatWithReport(message, chatId);
+
+        Assertions.assertNotNull(report);
     }
 
 }

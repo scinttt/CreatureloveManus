@@ -8,11 +8,6 @@ import java.util.Map;
 
 public class ReReadingAdvisor implements CallAroundAdvisor, StreamAroundAdvisor {
 
-    /**
-     * 执行请求前，改写 Prompt
-     * @param advisedRequest
-     * @return
-     */
     private AdvisedRequest before(AdvisedRequest advisedRequest) {
 
         Map<String, Object> advisedUserParams = new HashMap<>(advisedRequest.userParams());
