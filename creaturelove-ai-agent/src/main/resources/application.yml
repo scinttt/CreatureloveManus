@@ -27,3 +27,7 @@ springdoc:
 # knife4j config
 knife4j:
   enable: true
+
+  logging:
+    level:
+      org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor: debug
