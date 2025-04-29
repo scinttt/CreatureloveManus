@@ -3,11 +3,11 @@ package com.creaturelove.creatureloveaiagent.app;
 
 import com.creaturelove.creatureloveaiagent.advisor.MyLoggerAdvisor;
 import com.creaturelove.creatureloveaiagent.advisor.ReReadingAdvisor;
+import com.creaturelove.creatureloveaiagent.chatmemory.FileBasedChatMemory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.memory.ChatMemory;
-import org.springframework.ai.chat.memory.InMemoryChatMemory;
 import org.springframework.ai.chat.model.ChatModel;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.stereotype.Component;
@@ -29,7 +29,8 @@ public class ChatApp {
 
     public ChatApp(ChatModel dashscopeChatModel) {
         // Initialize the chat client with the chat model and system prompt
-        ChatMemory chatMemory = new InMemoryChatMemory();
+        String fileDir = System.getProperty("user.dir") + "/char-memory";
+        ChatMemory chatMemory = new FileBasedChatMemory(fileDir);
         chatClient = ChatClient.builder(dashscopeChatModel)
                 .defaultSystem(SYSTEM_PROMPT)
                 .defaultAdvisors(
