@@ -6,6 +6,11 @@ spring:
       base-url: http://localhost:11434
       chat:
         model: gemma3:1b
+  datasource:
+    url: jdbc:mysql://localhost:3306/chatdb
+    driverClassName: com.mysql.cj.jdbc.Driver
+    username: chatuser
+    password: chatpassword
 server:
   port: 8123
   servlet:
